@@ -21,12 +21,7 @@ public class CarController {
 
     @GetMapping(value = "/cars")
     public String showCars(@RequestParam(required = false) Integer count, ModelMap model) {
-        List<Car> cars;
-        if (count == null) {
-            cars = carService.getCars(Integer.MAX_VALUE);
-        } else {
-            cars = carService.getCars(count);
-        }
+        List<Car> cars = carService.getCars(count);
         System.out.println("Cars to display: " + cars);
         model.addAttribute("cars", cars);
         return "cars";
